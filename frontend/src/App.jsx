@@ -26,7 +26,7 @@ function App() {
     )
   }
   return (
-  <div className='bg-[#1C1C1C]  w-full min-h-screen'>
+  <div className='bg-[#1C1C1C]  w-full min-h-screen min-w-screen'>
      <BrowserRouter >
       <Routes>
           <Route path='/signup' element={<Suspense fallback={lazyLoad()}><Signup/></Suspense>}></Route>
