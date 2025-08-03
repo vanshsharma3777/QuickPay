@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "middleware": "^1.0.0",
+    "mongoose": "^8.16.1",
+    "router": "^2.2.0",
+    "zod": "^3.25.75"
+  }
+}
