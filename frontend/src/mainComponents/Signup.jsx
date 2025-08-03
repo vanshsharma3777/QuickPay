@@ -102,7 +102,7 @@ const Signin = () => {
             <SubmitButton label="Submit it" onClick={handleSubmit} ></SubmitButton>
           </div>
           <div className="pt-4 flex justify-center w-[155%] text-gray-500">
-            Don't have an Account? <span onClick={nav} className="underline cursor-pointer"> Sign In </span>
+             Have an Account? <span onClick={nav} className="underline cursor-pointer"> Sign In </span>
           </div>
         </div>
       </div>
