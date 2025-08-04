@@ -32,7 +32,7 @@ const [errors , setErrors]=useState({})
          setErrors({})
       }
       try {
-         const res = await axios.post(`${backendURL},/api/v1/user/signin`, data)
+         const res = await axios.post(`${backendURL}/api/v1/user/signin`, data)
          const { token, user } = res.data;
         
          if(token){

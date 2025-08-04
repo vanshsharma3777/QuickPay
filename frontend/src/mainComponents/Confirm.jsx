@@ -29,7 +29,7 @@ const Confirm =()=>{
         }
         const token = localStorage.getItem('token')
         try{
-            const res = await axios.post(`${backendURL},/api/v1/amount/transfer`, {
+            const res = await axios.post(`${backendURL}/api/v1/amount/transfer`, {
                  to: recepient._id,
                  amount: amount,
             },{
