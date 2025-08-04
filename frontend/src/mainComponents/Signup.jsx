@@ -39,7 +39,7 @@ const Signin = () => {
       setErrors({})
     }
    try {
-  const res = await axios.post(`${backendURL},/api/v1/user/signup`, data);
+  const res = await axios.post(`${backendURL}/api/v1/user/signup`, data);
   console.log('response:', res.data);
 
   // ✅ Save token to localStorage

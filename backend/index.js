@@ -1,11 +1,22 @@
 const express =require('express')
 const rootRouter= require('./routes/index')
-const cors= require('cors')
 const PORT = process.env.PORT || 2000
+const cors = require('cors');
 const app=express()
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://quickpay-2backe.onrender.com'
+];
+
 app.use(cors({
-  origin: 'https://quickpay-8.onrender.com',
-  credentials: true // optional, if using cookies or auth headers
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true
 }));
 
 
