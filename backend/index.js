@@ -1,7 +1,7 @@
 const express =require('express')
 const rootRouter= require('./routes/index')
 const cors= require('cors')
-const PORT = process.env.PORT||5000
+const PORT = process.env.PORT || 2000
 const app=express()
 app.use(cors({
   origin: 'https://quickpay-8.onrender.com',
