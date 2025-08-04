@@ -13,7 +13,7 @@ const Signin = () => {
   const passwordref = useRef()
   const navigate = useNavigate()
   
-
+ 
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async (e) => {
@@ -27,18 +27,25 @@ const Signin = () => {
     }
 
     const result = signupSchema.safeParse(data)
-    if (!result.success) {
-      const fieldErrors = {}
-      result.error.errors.forEach((err) => {
-        fieldErrors[err.path[0]] = err.message;
-      });
-      setErrors(fieldErrors);
-      return
-    }
-    else {
-      setErrors({})
-    }
+   if (!result.success) {
+  const fieldErrors = {}
+
+  if (result.error && Array.isArray(result.error.errors)) {
+    result.error.errors.forEach((err) => {
+      fieldErrors[err.path[0]] = err.message;
+    });
+  } else {
+    console.error("Unexpected validation error:", result.error);
+  }
+
+  setErrors(fieldErrors);
+  return;
+} else {
+  setErrors({})
+}
+
    try {
+     console.log(backendURL)
   const res = await axios.post(`${backendURL}/api/v1/user/signup`, data);
   console.log('response:', res.data);
 
