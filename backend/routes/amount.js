@@ -31,24 +31,23 @@ router.get('/balance', authenticationMiddleware, async (req, res) => {
 
 router.post('/transfer', authenticationMiddleware, async (req, res) => {
   const { to, amount } = req.body;
-
-  const account = await Account.findOne({ userId: req.userId })
-  if (account.balance < amount) {
-    return res.status(403).json({
-      msg: "Insufficient balance"
-    })
-  }
-
-  const parsedAmount = Number(amount);
+    const parsedAmount = Number(amount);
 
 if (isNaN(parsedAmount) || parsedAmount <= 0) {
   return res.status(400).json({ msg: "Invalid transfer amount" });
 }
+
+const account = await Account.findOne({ userId: req.userId });
+
+if (account.balance < parsedAmount) {
+  return res.status(403).json({ msg: "Insufficient balance" });
+}
+
   await Account.updateOne({
     userId: req.userId
   }, {
     $inc: {
-      balance: -amount
+      balance: -parsedAmount
     }
   })
 
@@ -56,7 +55,7 @@ if (isNaN(parsedAmount) || parsedAmount <= 0) {
     userId: to
   }, {
     $inc: {
-      balance: amount
+      balance: parsedAmount
     }
   })
 

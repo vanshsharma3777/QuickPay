@@ -19,15 +19,17 @@ const Confirm =()=>{
             return;
         }
         setLoading(true)
-        console.log(amount)
+        
         if(amount<=0){
-            alert('Insufficent balance')
+            navigate('/send')
+            alert('Invalid amount')
+
             return;
         }
         const token = localStorage.getItem('token')
         try{
             const res = await axios.post("http://localhost:100/api/v1/amount/transfer", {
-                 toUserId: recepient._id,
+                 to: recepient._id,
                  amount: amount,
             },{
                  headers: {
@@ -43,9 +45,12 @@ const Confirm =()=>{
             const errMsg= err.response?.data?.msg || 'something went wrong'
             if(errMsg==='Insufficient balance'){
                 setError('Insufficient balance')
+                navigate('/dashboard')
+                alert('Insufficient balance');
             }
             else{
                 console.log(errMsg)
+                alert(errMsg);
             }
         } 
         finally{
