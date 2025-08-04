@@ -42,7 +42,7 @@ const Dashboard = () => {
         const token = localStorage.getItem('token');
         const detail = async () => {
             try {
-                const res = await axios.get(`${backendURL}/api/v1/amount/balance`, {
+                const res = await axios.get(`${backendURL}api/v1/amount/balance`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
