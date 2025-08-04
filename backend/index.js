@@ -5,15 +5,18 @@ const cors = require('cors');
 const app=express()
 const allowedOrigins = [
   'http://localhost:5173',
+  "https://quick-pay-m4vt.vercel.app",
   'https://quickpay-2backe.onrender.com'
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true)
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'))
+      return callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true
