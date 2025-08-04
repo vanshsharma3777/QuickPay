@@ -19,8 +19,8 @@ const Confirm =()=>{
             return;
         }
         setLoading(true)
-        
-        if(amount>=0){
+        console.log(amount)
+        if(amount<=0){
             alert('Insufficent balance')
             return;
         }
@@ -39,7 +39,7 @@ const Confirm =()=>{
             navigate('/thankyou')
         }
         catch(err){
-            console.log(errMsg)
+            
             const errMsg= err.response?.data?.msg || 'something went wrong'
             if(errMsg==='Insufficient balance'){
                 setError('Insufficient balance')

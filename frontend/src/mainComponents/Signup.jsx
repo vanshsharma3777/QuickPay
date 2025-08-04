@@ -46,12 +46,21 @@ const Signin = () => {
     
     localStorage.setItem('token', res.data.token);
   }
+        
+        if (res.data.token && res.data.user) {
+  localStorage.setItem('token', res.data.token);
+  localStorage.setItem('user', JSON.stringify(res.data.user));
+
+  alert('Signup successful! Redirecting...');
+
+    navigate('/dashboard' ,  { state: res.data.user });
+}
+
 
   if (res.data.msg === 'user created succesfully') {
-    alert('User Created! Redirecting to dashboard...');
-    setTimeout(() => {
-      navigate('/dashboard');
-    }, 3000);
+
+      navigate('/dashboard' ,  { state: res.data.user });
+
   }
 } catch (err) {
   console.log('error:', err.response?.data || err.message);

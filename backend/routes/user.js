@@ -45,15 +45,22 @@ router.post('/signup', async (req,res)=>{
         balance:10000
     })
 
-    const token=jwt.sign({userId :User._id
+    const token=jwt.sign({userId :newUser._id
     }, JWT_SECRET 
 )
 
     res.json({
-        msg:'user created succesfully',
-        username:req.body.username,
-        token:token
-    })
+    msg:'user created succesfully',
+    username:req.body.username,
+    token:token,
+    user: {
+        _id: newUser._id,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        username: newUser.username
+    }
+});
+
 })
 
 //route to signin
