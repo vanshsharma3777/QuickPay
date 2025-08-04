@@ -43,7 +43,7 @@ const Signin = () => {
 } else {
   setErrors({})
 }
-
+  console.log("BACKEND URL:", backendURL);
    try {
      console.log(backendURL)
   const res = await axios.post(`${backendURL}/api/v1/user/signup`, data);
