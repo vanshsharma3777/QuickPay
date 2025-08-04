@@ -13,6 +13,12 @@ app.use(express.json())
 app.use(cors())
 app.use('/api/v1',rootRouter)
 
+app.get('/', function(req,res){
+  res.json({
+    msg:'working ok'
+  })
+})
+
 app.listen(PORT ,function(req,res){
     console.log("server is running without intruption .. ", PORT)
 })
