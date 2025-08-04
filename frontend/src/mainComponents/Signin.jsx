@@ -3,6 +3,7 @@ import Input from "../components2/Input"
 import SubmitButton from "../components2/SubmitButton"
 import { useRef, useState } from "react";
 import { useNavigate  } from "react-router-dom";
+const backendURL = import.meta.env.VITE_BACKEND_URL;
 import { signinSchema } from "../validation/singinSchema";
 import axios from "axios";
 const Signup =()=>{
@@ -31,7 +32,7 @@ const [errors , setErrors]=useState({})
          setErrors({})
       }
       try {
-         const res = await axios.post('https://quickpay-5.onrender.com/api/v1/user/signin', data)
+         const res = await axios.post(backendURL,'/api/v1/user/signin', data)
          const { token, user } = res.data;
         
          if(token){

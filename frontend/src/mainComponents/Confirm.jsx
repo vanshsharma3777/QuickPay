@@ -1,6 +1,7 @@
 import { useNavigate , useLocation } from "react-router-dom"
 import axios from "axios";
 import { useEffect, useState } from "react";
+const backendURL = import.meta.env.VITE_BACKEND_URL;
 const Confirm =()=>{
     const location = useLocation();
     const navigate=useNavigate()
@@ -28,7 +29,7 @@ const Confirm =()=>{
         }
         const token = localStorage.getItem('token')
         try{
-            const res = await axios.post("https://quickpay-5.onrender.com/api/v1/amount/transfer", {
+            const res = await axios.post(backendURL,"/api/v1/amount/transfer", {
                  to: recepient._id,
                  amount: amount,
             },{

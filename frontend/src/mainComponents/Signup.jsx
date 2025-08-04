@@ -3,6 +3,7 @@ import Input from "../components2/Input"
 import SubmitButton from "../components2/SubmitButton"
 import { useNavigate } from "react-router-dom";
 import { signupSchema } from '../validation/signupSchema'
+const backendURL = import.meta.env.VITE_BACKEND_URL;
 import axios from "axios"
 import { useState, useRef } from "react";
 const Signin = () => {
@@ -38,7 +39,7 @@ const Signin = () => {
       setErrors({})
     }
    try {
-  const res = await axios.post('https://quickpay-5.onrender.com/api/v1/user/signup', data);
+  const res = await axios.post(backendURL,'/api/v1/user/signup', data);
   console.log('response:', res.data);
 
   // ✅ Save token to localStorage

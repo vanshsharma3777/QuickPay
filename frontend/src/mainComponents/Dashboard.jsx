@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
+const backendURL = import.meta.env.VITE_BACKEND_URL;
 import axios from "axios"
 const Dashboard = () => {
     const [amount, setAmount] = useState(0)
@@ -41,7 +42,7 @@ const Dashboard = () => {
         const token = localStorage.getItem('token');
         const detail = async () => {
             try {
-                const res = await axios.get('https://quickpay-5.onrender.com/api/v1/amount/balance', {
+                const res = await axios.get(backendURL,'/api/v1/amount/balance', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
