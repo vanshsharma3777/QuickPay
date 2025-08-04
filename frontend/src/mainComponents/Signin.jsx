@@ -31,7 +31,7 @@ const [errors , setErrors]=useState({})
          setErrors({})
       }
       try {
-         const res = await axios.post('http://localhost:100/api/v1/user/signin', data)
+         const res = await axios.post('https://quickpay-5.onrender.com/api/v1/user/signin', data)
          const { token, user } = res.data;
         
          if(token){

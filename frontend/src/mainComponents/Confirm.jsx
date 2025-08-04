@@ -28,7 +28,7 @@ const Confirm =()=>{
         }
         const token = localStorage.getItem('token')
         try{
-            const res = await axios.post("http://localhost:100/api/v1/amount/transfer", {
+            const res = await axios.post("https://quickpay-5.onrender.com/api/v1/amount/transfer", {
                  to: recepient._id,
                  amount: amount,
             },{

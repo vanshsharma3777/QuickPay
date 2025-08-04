@@ -41,7 +41,7 @@ const Dashboard = () => {
         const token = localStorage.getItem('token');
         const detail = async () => {
             try {
-                const res = await axios.get('http://localhost:100/api/v1/amount/balance', {
+                const res = await axios.get('https://quickpay-5.onrender.com/api/v1/amount/balance', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

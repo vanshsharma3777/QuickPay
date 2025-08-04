@@ -38,7 +38,7 @@ const Signin = () => {
       setErrors({})
     }
    try {
-  const res = await axios.post('http://localhost:100/api/v1/user/signup', data);
+  const res = await axios.post('https://quickpay-5.onrender.com/api/v1/user/signup', data);
   console.log('response:', res.data);
 
   // ✅ Save token to localStorage
