@@ -21,7 +21,7 @@ const Confirm =()=>{
         setLoading(true)
         
         if(amount<=0){
-            navigate('/send')
+            navigate('/dashboard')
             alert('Invalid amount')
 
             return;
