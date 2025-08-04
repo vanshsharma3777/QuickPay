@@ -38,9 +38,7 @@ const [errors , setErrors]=useState({})
          if(token){
             localStorage.setItem('token',token)
              localStorage.setItem("user", JSON.stringify(user));
-            setTimeout(() => {
-               navigate('/dashboard')
-            }, 2000);
+             navigate('/dashboard')
             alert('Login Successful!...')
          }
       } catch (err) {
